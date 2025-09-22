@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/index.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet">
+    <title>Animaliscare</title>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <div class="logo">
+                <a href="{% url 'index' %}">
+                    <img src="{% static 'core/img/PawPrint.png' %}" alt="Logo Animaliscare" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'blog' %}">Blog</a></li>
+                <li><a href="{% url 'sobre' %}">Sobre nós</a></li>
+            </ul>
+        </div>
+        <button class="btn-agendar">Marcar horário</button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <img src="{% static 'core/img/patinhas.png' %}" alt="patinhas" class="patinha">    
+        <img src="{% static 'core/img/banner.jpg' %}" alt="Cachorro fofo" class="hero-dog">
+        <div class="hero-left">
+            <p>Aqui nós priorizamos a saúde do seu melhor amigo</p>
+            <button class="btn-consultar">Consultar exames</button>
+        </div>
+        <div class="hero-right">
+            <blockquote>
+                <strong>“Resultados precisos e rapidez impressionante.”
+                    <span>–Lucas Oliveira, cliente Animaliscare por 6 meses</span>
+                </strong>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section class="servicos">
+        <h2><span>Serviços</span> de ALTA qualidade</h2>
+        <p class="descricao"><strong>Atendimento 24H</strong> em todas as nossas 56 filiais espalhadas pelo Brasil.<br>Exames laboratoriais inclusos e Home-care!</p>
+        <div class="cards">
+            <div class="card azul">
+                <h3>Consulta Veterinária</h3>
+                <ul>
+                    <li>Atendimento personalizado</li>
+                    <li>Plantão 24h</li>
+                    <li>Mais de 56 unidades no Brasil</li>
+                    <li>Consultas a partir de R$29,90</li>
+                </ul>
+                <button>Ver mais</button>
+            </div>
+            <div class="card laranja">
+                <h3>Exames Laboratoriais</h3>
+                <ul>
+                    <li>Maior preço do mercado</li>
+                    <li>Atendimento 24h</li>
+                    <li>Resultados rápidos e precisos</li>
+                    <li>Home care especializado*</li>
+                </ul>
+                <button>Ver mais</button>
+            </div>
+            <div class="card rosa">
+                <h3>Plano PET de Saúde</h3>
+                <ul>
+                    <li>Sem carência para consultas</li>
+                    <li>Atendimento 24H</li>
+                    <li>Exames laboratoriais inclusos</li>
+                    <li>Descontos exclusivos para clientes</li>
+                </ul>
+                <button>Ver mais</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- COLETA -->
+    <section class="coleta">
+        <div class="coleta-box">
+            <span>📍 Rua Ali Perto, 00 - Natal/RN</span>
+            <h2>Solicite uma coleta</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Augue pulvinar nunc sit dictumst a, cursus molestie.</p>
+            <button>Entrar em contato</button>
+        </div>
+    </section>
+
+    <!-- PLANOS -->
+    <section class="planos">
+        <h2><span>PLANO PET</span> de Saúde</h2>
+        <p><strong>Atendimento 24H</strong> em todas as nossas 56 filiais espalhadas pelo Brasil.<br>Exames laboratoriais inclusos e Home-care*</p>
+        <div class="cards-planos">
+            <div class="card silver">
+                <h3>SILVER</h3>
+                <p class="preco">R$ 199,90/mês</p>
+                <ul>
+                    <li>Atendimento <strong>24H</strong></li>
+                    <li>Exames laboratoriais inclusos</li>
+                    <li>Descontos exclusivos no nosso APP</li>
+                    <li>Acompanhamento semanal via WhatsApp</li>
+                </ul>
+                <button class="butaosilver">Contratar</button>
+            </div>
+            <div class="card golden">
+                <h3>GOLDEN</h3>
+                <p class="preco">R$ 499,90/mês</p>
+                <ul>
+                    <li>Atendimento <strong>24h</strong></li>
+                    <li>Exames laboratoriais inclusos</li>
+                    <li>Descontos exclusivos no nosso APP</li>
+                    <li>Acompanhamento semanal via WhatsApp</li>
+                    <li>Upgrade disponível para plano familiar</li>
+                    <li>Sem carência</li>
+                    <li>Home-care especializado*</li>
+                </ul>
+                <button class="butaogolden">Contratar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- VANTAGENS -->
+    <section class="vantagens">
+        <div class="vantagens-content">
+            <h2>Nossas Vantagens</h2>
+            <!-- itens das vantagens aqui (mantém como você tinha) -->
+        </div>
+        <div>
+            <img src="{% static 'core/img/cachorro computador.png' %}" alt="Cachorro com notebook" class="dog-img">
+        </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="contato">
+        <div class="contato-container">
+            <div class="contato-info">
+                <h2>Entre em contato</h2>
+                <p><strong>O atendimento mais rápido do mercado</strong></p>
+                <form method="post" class="contato-form">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">ENVIAR SOLICITAÇÃO</button>
+                </form>
+            </div>
+            <div class="contato-mapa">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3232.230574445493!2d-86.78324042341858!3d36.16227679950859!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8864665e8b2dfc65%3A0xf6b20f2e962c6b6f!2s530%20Centennial%20Park%20Dr%2C%20Nashville%2C%20TN%2037219%2C%20EUA!5e0!3m2!1spt-BR!2sbr!4v1694977329348!5m2!1spt-BR!2sbr" 
+                    width="100%" height="300" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                <p>530 Centennial, Nashville, TN 37219, Estados Unidos</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- APRESENTAÇÃO -->
+    <section class="apresentacao">
+        <div class="apresentacao-container">
+            <div class="apresentacao-texto">
+                <h2>Doutora Annelise Figueiredo</h2>
+                <span class="registro">CRMV/RN 17102</span>
+                <p>Lorem ipsum dolor sit amet consectetur. Nac id sit enim cursus pharetra tellus sed nec vel. A purus velit tortor orci pretium dam nulla. Commodo rhoncus hac felis nisl neque felis porta. Facilisis est est dictumst lacus quam nunc sit.</p>
+            </div>
+            <div class="apresentacao-imagem">
+                <img src="{% static 'core/img/doutora.png' %}" alt="Doutora Annelise Figueiredo">
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="footer"> 
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="https://i.ibb.co/8gbq4pTs/logo.png" alt="Logo">
+            </div>
+            <div class="footer-contact">
+                <h3>CONTATO</h3>
+                <p>+55 21 99999-9999</p>
+                <p>contato@animalisecare.com</p>
+                <hr>
+                <p>Rua ali perto, 42 - Candelária<br>Rio Grande do Norte - RN</p>
+                <hr>
+                <div class="footer-socials">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-info">
+                <h3>INFORMAÇÕES</h3>
+                <ul>
+                    <li><a href="#">Exames Laboratoriais</a></li>
+                    <li><a href="#">Consultas Veterinarias</a></li>
+                    <li><a href="#">Plano PET de saúde</a></li>
+                    <li><a href="#">Quem somos?</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-rights">
+            <p>EJECT © Alguns Direitos Reservados</p>
+        </div>
+    </footer>
+</body>
+</html>
