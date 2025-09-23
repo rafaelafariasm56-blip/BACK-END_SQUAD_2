@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AnimalsCare{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=DM Sans' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="navbar-left">
+        <div class="logo">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'core/img/PawPrint.png' %}" alt="Logo Animaliscare" class="logo-img">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Sobre nós</a></li>
+        </ul>
+    </div>
+    <button class="btn-agendar">Marcar horário</button>
+</nav>
+
+<!-- Conteúdo principal -->
+{% block content %}{% endblock %}
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-logo">
+            <img src="https://i.ibb.co/8gbq4pTs/logo.png" alt="">
+        </div>
+
+        <div class="footer-contact">
+            <h3>CONTATO</h3>
+            <p>+55 21 99999-9999</p>
+            <p>contato@animalisecare.com</p>
+            <hr>
+            <p>Rua ali perto, 42 - Candelária<br>Rio Grande do Norte - RN</p>
+            <hr>
+            <div class="footer-socials">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-info">
+            <h3>INFORMAÇÕES</h3>
+            <ul>
+                <li><a href="#">Exames Laboratoriais</a></li>
+                <li><a href="#">Consultas Veterinarias</a></li>
+                <li><a href="#">Plano PET de saúde</a></li>
+                <li><a href="#">Quem somos?</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-rights">
+        <p>EJECT © Alguns Direitos Reservados</p>
+    </div>
+</footer>
+
+</body>
+</html>
