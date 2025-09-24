@@ -9,7 +9,6 @@ def blog_page(request):
     posts = BlogPost.objects.filter(published=True)
     return render(request, 'blog/blog_list.html', {'posts': posts})
 
-    queryset = BlogPost.objects.all()
-    lookup_field = 'id'
+
 
 
