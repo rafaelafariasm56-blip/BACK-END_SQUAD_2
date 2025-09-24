@@ -1,7 +1,12 @@
 from django.urls import path
 from . import views
 
+
 urlpatterns = [
+    path('', views.blog_page, name='blog'),  
+    path('posts/', views.BlogPostListView.as_view(), name='blog-list'),
+    path('posts/<int:id>/', views.BlogPostDetailView.as_view(), name='blog-detail'),
+    path('featured/', views.FeaturedPostsView.as_view(), name='blog-featured'),
     path('posts/', views.BlogPostListView.as_view(), name='blog-post-list'),
     path('posts/<int:id>/', views.BlogPostDetailView.as_view(), name='blog-post-detail'),
     path('posts/featured/', views.FeaturedPostsView.as_view(), name='featured-posts'),

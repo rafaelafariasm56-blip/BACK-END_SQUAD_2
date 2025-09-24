@@ -11,7 +11,9 @@ from .serializers import (
     CategorySerializer,
     AuthorSerializer
 )
-
+def blog_page(request):
+    posts = BlogPost.objects.filter(published=True)
+    return render(request, 'blog/blog_list.html', {'posts': posts})
 class BlogPostListView(generics.ListAPIView):
     serializer_class = BlogPostListSerializer
     
