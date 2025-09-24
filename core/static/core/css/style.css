@@ -392,14 +392,25 @@ body {
   background-color: #66a8c9cc; 
   color: #fff;
 }
-
-.vantagens {
-  background: #cfeaf8; 
+.planos-vantagens {
+  background: #CFEAF8; 
+  padding: 60px 20px;
   border-radius: 20px;
-  padding: 50px;
+  max-width: 1160px;
+  margin: 50px auto;
   position: relative;
-  max-width: 900px;
-  margin: 60px auto;
+}
+
+.planos-vantagens-content {
+  text-align: center;
+}
+
+.cards-planos {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
 }
 
 .vantagens-content {
@@ -410,6 +421,15 @@ body {
   border-radius: 20px;
   padding: 40px;
   text-align: left;
+}
+
+.vantagens {
+  background: #cfeaf8; 
+  border-radius: 20px;
+  padding: 50px;
+  position: relative;
+  max-width: 900px;
+  margin: 60px auto;
 }
 
 .vantagens-content h2 {
@@ -427,19 +447,33 @@ body {
   gap: 14px;
 }
 
-.icon svg {
+.icon {
   flex-shrink: 0;
+  width: 32px;   /* largura fixa para todos os ícones */
+  text-align: center;
+}
+.vantagem-texto {
+  flex: 1; 
+}
+
+.icon svg {
   width: 28px;
   height: 28px;
 }
 
 .vantagem-item h3 {
+  word-wrap: break-word;
+  width: 350px;
+  text-align: left;
   font-size: 20px;
   margin-bottom: 6px;
   color: #000;
 }
 
 .vantagem-item p {
+  word-wrap: break-word;
+  width: 350px;
+  text-align: left;
   font-size: 16px;
   color: #535353C6;
   line-height: 1.5;

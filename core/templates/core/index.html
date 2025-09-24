@@ -65,114 +65,63 @@
         </div>
     </div>
 </section>
-
-<!-- Plano PET (estático) -->
-  <section class="planos">
+<section class="planos-vantagens">
+  <div class="planos-vantagens-content">
     <h2><span>PLANO PET</span> de Saúde</h2>
     <p><strong>Atendimento 24H</strong> em todas as nossas 56 filiais espalhadas pelo Brasil.<br>
     Exames laboratoriais inclusos e Home-care*</p>
 
     <div class="cards-planos">
-      <div class="card silver">
-        <h3>SILVER</h3>
-        <p class="preco">R$ 199,90/mês</p>
-        <ul>
-          <li>Atendimento <strong>24H</strong></li>
-          <li>Exames laboratoriais inclusos</li>
-          <li>Descontos exclusivos no nosso APP</li>
-          <li>Acompanhamento semanal via WhatsApp</li>
-        </ul>
-        <button class="butaosilver">Contratar</button>
+      {% if planos %}
+        {% for plano in planos %}
+          <div class="card {{ plano.classe }}">
+            <h3>{{ plano.nome }}</h3>
+            <p class="preco">{{ plano.preco }}</p>
+            
+            {% if plano.vantagens %}
+              <ul>
+                {% for vantagem in plano.vantagens_lista %}
+                  <li>{{ vantagem }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+            
+            <button class="botao {% if plano.classe == 'silver' %}butaosilver{% else %}butaogolden{% endif %}">Contratar</button>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>Não há planos disponíveis no momento.</p>
+      {% endif %}
+    </div>
+
+    <div class="vantagens">
+      <div class="vantagens-content">
+        <h2>Nossas Vantagens</h2>
+
+        {% for vantagem in vantagens %}
+        <div class="vantagem-item">
+          <span class="icon">
+            {{ vantagem.icone_svg|safe }}
+          </span>
+          <div>
+            <h3>{{ vantagem.titulo }}</h3>
+            <p>{{ vantagem.descricao }}</p>
+          </div>
+        </div>
+        {% endfor %}
       </div>
 
-    <div class="card golden">
-      <h3>GOLDEN</h3>
-      <p class="preco">R$ 499,90/mês</p>
-      <ul>
-        <li>Atendimento <strong>24h</strong></li>
-        <li>Exames laboratoriais inclusos</li>
-        <li>Descontos exclusivos no nosso APP</li>
-        <li>Acompanhamento semanal via WhatsApp</li>
-        <li>Upgrade disponível para plano familiar</li>
-        <li>Sem carência</li>
-        <li>Home-care especializado*</li>
-      </ul>
-      <button class="butaogolden">Contratar</button>
+      <div>
+        <img src="{% static 'core/img/cachorro computador.png' %}" 
+             alt="Cachorro com notebook" 
+             class="dog-img">
+      </div>
     </div>
+
   </div>
-<section class="vantagens">
-  <div class="vantagens-content">
-    <h2>Nossas Vantagens</h2>
-    <div class="vantagem-item">
-      <span class="icon">
-        <!-- Exemplo SVG (relógio) -->
-        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15 0C6.72875 0 0 6.72875 0 15C0 23.2712 6.72875 30 15 30C23.2712 30 30 23.2712 30 15C30 6.72875 23.2712 0 15 0ZM20 16.25H15C14.31 16.25 13.75 15.6912 13.75 15V7.5C13.75 6.80875 14.31 6.25 15 6.25C15.69 6.25 16.25 6.80875 16.25 7.5V13.75H20C20.6912 13.75 21.25 14.3088 21.25 15C21.25 15.6912 20.6912 16.25 20 16.25Z" fill="#6DB5D8"/>
-        </svg>
-
-      </span>
-      <div>
-        <h3>Atendimento 24H</h3>
-        <p>Garantimos o reparo completo do seu motor em caso de falhas. Estamos sempre prontos para ajudar.</p>
-      </div>
-    </div>
-
-    <div class="vantagem-item">
-      <span class="icon">
-        <svg width="30" height="33" viewBox="0 0 30 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M27.9941 11.3521L17.6431 1.20589C16.7442 0.301567 15.4512 -0.141004 14.195 0.0398609L4.80009 1.33058C4.05401 1.43334 3.53162 2.12392 3.63391 2.87341C3.73621 3.6229 4.42228 4.14631 5.17109 4.04492L14.5673 2.7542C14.9847 2.69665 15.4157 2.84052 15.7281 3.1543L26.0805 13.3005C27.5058 14.7324 27.6449 16.9726 26.521 18.5716C26.2018 17.9318 25.8077 17.322 25.2785 16.7904L15.0829 6.63457C14.1854 5.73299 12.9047 5.29864 11.6348 5.46854L2.23859 6.75926C1.61936 6.84421 1.13652 7.34159 1.06832 7.96639L0.0248999 17.4426C-0.111495 18.6908 0.316785 19.9144 1.20335 20.8037L11.3184 30.8787C12.606 32.1735 14.3177 32.8846 16.1386 32.8846H16.1618C17.9922 32.8791 19.7081 32.1557 20.9943 30.8471L25.3139 26.4516C26.5783 25.165 27.2139 23.4934 27.2548 21.8094L28.0418 21.0202C30.6674 18.3483 30.6524 14.0158 27.9982 11.3508L27.9941 11.3521ZM6.81738 13.7034C6.06448 13.7034 5.45342 13.0895 5.45342 12.3332C5.46161 10.541 8.17314 10.5423 8.18133 12.3332C8.18133 13.0895 7.57028 13.7034 6.81738 13.7034Z" fill="#6DB5D8"/>
-        </svg>
-      </span>
-      <div>
-        <h3>Descontos Exclusivos</h3>
-        <p>Benefícios únicos e preços especiais para clientes cadastrados em nosso plano.</p>
-      </div>
-    </div>
-
-    <div class="vantagem-item">
-      <span class="icon">
-        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15 11.4587C15 11.4587 8.75 7.0375 8.75 3.4375C8.75 1.53875 10.1488 0 11.875 0C13.6012 0 15 1.53875 15 3.4375C15 1.53875 16.3988 0 18.125 0C19.8512 0 21.25 1.53875 21.25 3.4375C21.25 7.0375 15 11.4587 15 11.4587ZM16.2712 19.3588C17.0538 20.07 17.5 21.0775 17.5 22.135V30H5.205L1.30875 25.735C0.4675 24.8137 0 23.6112 0 22.3625V6.875C0 5.0425 1.57625 3.57875 3.4475 3.76625C5.07375 3.92875 6.25 5.41875 6.25 7.05375V11.9963C6.25 11.9963 5.3 12.7662 5.11625 12.9688C3.36625 14.8962 3.2975 17.8625 4.96 19.8675L9.25625 24.2075L11.0112 22.4525L6.9575 18.3587C6.20375 17.4487 6.0175 16.1437 6.6175 15.1262C7.54125 13.5588 9.605 13.305 10.8763 14.46L16.2725 19.36L16.2712 19.3588ZM23.385 15.1262C22.4613 13.5588 20.3975 13.305 19.1262 14.46L16.86 16.5175L17.9525 17.51C19.1 18.5525 19.7838 19.9937 19.9363 21.525L23.045 18.36C23.7988 17.45 23.985 16.145 23.385 15.1275V15.1262ZM26.8762 3.75C25.15 3.75 23.7512 5.14875 23.7512 6.875V11.995C23.7512 11.995 24.7013 12.765 24.885 12.9675C26.635 14.895 26.7038 17.8612 25.0413 19.8662L20 24.9763V30H24.795L28.6912 25.735C29.5325 24.8137 30 23.6112 30 22.3625V6.875C30 5.14875 28.6025 3.75 26.8762 3.75Z" fill="#6DB5D8"/>
-        </svg>
-
-
-      </span>
-      <div>
-        <h3>Plano Familiar</h3>
-        <p>Atendimento para toda a família com cobertura especial e descontos ampliados.</p>
-      </div>
-    </div>
-
-    <div class="vantagem-item">
-      <span class="icon">
-        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M23.125 0C19.3337 0 16.25 3.085 16.25 6.875V10H0V26.25C0 28.3175 1.6825 30 3.75 30H18.75C20.8175 30 22.5 28.3175 22.5 26.25V10H18.75V6.875C18.75 4.4625 20.7125 2.5 23.125 2.5C25.5375 2.5 27.5 4.4625 27.5 6.875H30C30 3.085 26.9163 0 23.125 0ZM12.5 22.5H10V17.5H12.5V22.5Z" fill="#6DB5D8"/>
-        </svg>
-
-      </span>
-      <div>
-        <h3>Carência Zero</h3>
-        <p>Você pode utilizar nossos serviços imediatamente, sem tempo de espera.</p>
-      </div>
-    </div>
-    <div class="vantagem-item">
-      <span class="icon">
-        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M19.5438 15.5431C19.5438 17.1394 17.1475 19.9069 15.4175 21.2906C15.2687 21.4094 15.0675 21.4106 14.9188 21.2906C13.1888 19.9069 10.7938 17.1381 10.7938 15.5431C10.7938 14.5569 11.495 13.7556 12.3563 13.7556C13.1337 13.7556 13.9188 14.2231 13.9188 15.2669C13.9188 15.9569 14.4775 16.5169 15.1688 16.5169C15.86 16.5169 16.4188 15.9569 16.4188 15.2669C16.4188 14.1506 17.2612 13.7556 17.9813 13.7556C18.8425 13.7556 19.5438 14.5581 19.5438 15.5431ZM30 12.1594V23.7544C30 27.2006 27.1963 30.0044 23.75 30.0044H6.25C2.80375 30.0044 0 27.2006 0 23.7544V12.1594C0 10.0781 1.03 8.14188 2.75375 6.97813L11.5037 1.07438C13.6275 -0.358125 16.3725 -0.358125 18.4963 1.07438L27.2463 6.97937C28.97 8.14312 30 10.0794 30 12.1606V12.1594ZM22.0438 15.5431C22.0438 13.1781 20.2213 11.2556 17.9813 11.2556C16.8687 11.2556 15.8875 11.6531 15.1688 12.3206C14.45 11.6544 13.4688 11.2556 12.3563 11.2556C10.1163 11.2556 8.29375 13.1794 8.29375 15.5431C8.29375 18.4269 11.605 21.8406 13.3563 23.2431C13.89 23.6706 14.5288 23.8831 15.1688 23.8831C15.8088 23.8831 16.4462 23.6694 16.98 23.2431C18.7312 21.8419 22.0438 18.4294 22.0438 15.5431Z" fill="#6DB5D8"/>
-        </svg>
-      </span>
-      <div>
-        <h3>Home-care</h3>
-        <p>Atendimento no conforto da sua casa com profissionais qualificados.</p>
-      </div>
-    </div>
-    </div>
-    <div>
-        <img src="{% static 'core/img/cachorro computador.png' %}" alt="Cachorro com notebook" class="dog-img">
-    </div>
-    </section>
 </section>
-</section>
+
+
 
 <section class="contato">
   <div class="contato-container">
